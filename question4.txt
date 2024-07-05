@@ -1,0 +1,19 @@
+If you use the same PreAuthorize configuration on each method in a class, how can you
+make the annotations cleaner?
+
+
+I will declare a custom annotation that encapsulates the @PreAuthorize annotation. For example 
+
+
+There is a preauthorize role "ROLE_VIEWER"
+
+I can declare a custom annotation "ViewerOnly" that is using the "ROLE_VIEWER"
+
+@Target(ElementType.METHOD)
+@PreAuthorize("hasRole('ROLE_VIEWER')")
+public @interface ViewerOnly {
+}
+
+
+Therefore, I can use the custom annotation instead of using the pre-authorization code to ensure
+annotation is only define at "ViewerOnly" class.
